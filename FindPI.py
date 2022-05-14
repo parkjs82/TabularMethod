@@ -28,7 +28,7 @@ def combine(pi,key):
                     sumKey[k] = int(sumKey[k])
                 sumKey.sort()
                 sumKey = list(map(str, sumKey))
-                num = ' '.join(sumKey)+' ' #key값을 오름차순 정렬하기 위해 2번 형변환
+                num = ' '+' '.join(sumKey)+' ' #key값을 오름차순 정렬하기 위해 2번 형변환
 
                 returnPI[num] = combineStr(pi[key[i]], pi[key[j]])
                 counter[i] += 1
