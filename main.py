@@ -1,7 +1,6 @@
 import FindPI
 import Optimization
 
-# 입력 : damension,minterms
 minterm = list(map(int,input().split()))
 demension = minterm.pop(0)
 pi = {}
@@ -17,9 +16,11 @@ while counter != len(pi):
     counter = len(pi)
 
     Optimization.findNEPI(pi, minterm, EPIArray)
-    if len(minterm) == 0: break
+    if len(minterm) == 0:
+        break
     Optimization.rowDominance(pi, minterm, EPIArray)
 
     Optimization.findNEPI(pi, minterm, EPIArray)
-    if len(minterm) == 0: break
+    if len(minterm) == 0:
+        break
     Optimization.columnDominance(pi, minterm, EPIArray)
