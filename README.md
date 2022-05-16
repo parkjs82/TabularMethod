@@ -41,7 +41,7 @@ for i in range(0, demension):
 ### Optimization.py
 'showStep'
 
-'findNEPI'
+`findNEPI`
 
 'rowDominance'
 
