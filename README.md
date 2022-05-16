@@ -2,7 +2,7 @@
 Quine-McCluskey Method
 
 Test Cases
---
+---------------------
 (입력의 개수) (minterms)
 ```
 3 0 1 5 6 7
@@ -18,15 +18,20 @@ Test Cases
 4 0 2 5 6 7 8 9 13 //petrick`s Method 구현필요
 ```
 Algorithm
---
+---------------------
 ### FindPI.py
-'combine'
+---
+1. translate\
+계산의 효율과 가독성을 위해 a`,a 대신 0과 1을 사용한다.
 
-'translate'
+2. combine\
+`combineChech`의 반환값이 1일때 minterm을 더해 새로 만든 dictionary에 추가하며,\
+combine함수의 반복문이 끝난 후 사용되지 않은 PI들또한 dictionary에 추가해 반환한다.
 
-'sort'
+3. sort\
+merge된 pi들의 순서를 오름차순 정리하기 위해 merge의 표현인 '-' 대신 2로 치환한다.
 
-
+`main.py`실행 순서
 ```
 import FindPI
 minterm = list(map(int,input().split()))
@@ -39,16 +44,15 @@ for i in range(0, demension):
     
 ```
 ### Optimization.py
-'showStep'
+---
+1. showStep\
+`makeTable`,`printTable`함수로 유의미한 최적화가 일어났을 때 진행 상황을 보여준다.
+2. findNEPI\
+`findPI`, `delDontCareMinterm`, `changeAblePI` 함수를 사용해 최적화 과정의 실질적인 frame이다.
+3. rowDominance, columnDominance\
+`makeTable`함수로 만든 table을 기준으로 전수조사를 통해 축소 가능한 pi와 minterm을 찾는다.
 
-`findNEPI`
-
-'rowDominance'
-
-'columnDominance'
-
-'changeAblePI'
-
+`main.py`실행 순서
 ```
 import Optimization
 EPIArray = {}
@@ -69,7 +73,7 @@ while counter != len(pi):
 
 ```
 Output
---
+---------------------
 input : 3 0 1 5 6 7
 ```
 [0, 1, 5, 6, 7]
@@ -136,6 +140,6 @@ EPI :  {' 0 4 8 12 ': '--00', ' 13 15 ': '11-1', ' 10 11 ': '101-'}
 ```
 
 Limitation
---
+---------------------
   4 0 2 5 6 7 8 9 13 
 취의 예시처럼 Petrick`s Method가 필요한 테스트케이스에서 결괏값을 도출해내지 못한다.
